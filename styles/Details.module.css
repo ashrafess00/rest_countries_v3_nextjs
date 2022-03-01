@@ -1,0 +1,28 @@
+.main {
+  padding: 1.5rem;
+}
+.info2 {
+  margin: 2rem 0;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+.borders {
+  border-radius: 3px;
+  background-color: var(--white);
+  padding: 0.5rem;
+}
+
+.back {
+  text-decoration: none;
+  background-color: var(--white);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  display: block;
+  width: fit-content;
+  padding: 0.5rem 0.7rem;
+  border-radius: 5px;
+}

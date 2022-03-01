@@ -1,0 +1,37 @@
+.mainContainer {
+  padding: 2rem;
+}
+.filterCon {
+  margin-bottom: 2rem;
+}
+.search {
+  padding: 0.8rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+}
+.regionSelect {
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  border: none;
+  border-radius: 5px;
+}
+.infoCon {
+  padding: 1rem;
+  background-color: var(--white);
+}
+.countryDiv {
+  box-shadow: var(--shadow);
+  margin-bottom: 3rem;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 600px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+}

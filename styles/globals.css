@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --white: hsl(0, 0%, 100%);
+  --background: hsl(0, 0%, 98%);
+  --darkGray: hsl(0, 0%, 52%);
+  --text: hsl(210, 50%, 1%);
+  --shadow: 0px 3px 8px 1px #00000059;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito Sans", sans-serif;
+  /* font-weight: 300; */
+  background-color: var(--background);
+  color: var(--text);
+}
+
+input[type="text"] {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: var(--text);
+}
+select {
+  padding: 0.5rem;
+  color: var(--text);
+}
+h2 {
+  font-size: 1.2rem;
+  margin: 1rem 0 1rem;
+}
+
+dt {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+dt,
+dd {
+  display: inline-block;
+  color: var(--text);
+}
+
+dd {
+  margin-left: 0.5rem;
+}
+
+a {
+  display: block;
+}
+
+.mode {
+  cursor: pointer;
+}
