@@ -1,39 +1,15 @@
-import type { InferGetServerSidePropsType, NextPage } from "next";
+import type { NextPage } from "next";
 import Image from "next/image";
 import homeStyle from "../styles/Home.module.css";
 import Link from "next/link";
 
 import { useEffect, useRef, useState } from "react";
-import getCountries from "../Functions/getCountries";
-import useGetCountries from "../Functions/getCountries";
-import { GetStaticProps } from "next";
-import { on } from "stream";
-import { stringify } from "querystring";
+
 import useSWR from "swr";
 
-interface CountryInfo {
-  name: string;
-  population: number;
-  region: string;
-  capital: string[];
-  image: string;
-}
+import { CountryInfo } from "../Interfaces/CountryInfo";
 
 const Home: NextPage = () => {
-  function getRandomKey() {
-    const key1 = Date.now().toString();
-    const alphabets = [
-      "ab%$%#^%$^%cdefjhijklm^%&^%^nopq56876$%#%#$@!@rstuvwxwz43987",
-    ];
-    let key2 = "";
-    let i = 0;
-    while (i < 15) {
-      key2 += alphabets[Math.floor(Math.random() * alphabets.length)];
-      i++;
-    }
-    return key1 + key2;
-  }
-
   const fetcher = async (url: string) => {
     const res = await fetch(url);
     const data = await res.json();

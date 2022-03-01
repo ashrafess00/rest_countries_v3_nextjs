@@ -1,25 +1,13 @@
-import type { InferGetServerSidePropsType, NextPage } from "next";
+import type { GetStaticPaths, InferGetStaticPropsType } from "next";
 import Image from "next/image";
-import homeStyle from "../styles/Home.module.css";
 import Link from "next/link";
 
-import { useEffect, useRef, useState } from "react";
-import getCountries from "../Functions/getCountries";
-import useGetCountries from "../Functions/getCountries";
 import { GetStaticProps } from "next";
-import { on } from "stream";
-import Router, { useRouter } from "next/router";
 import detailsStyle from "../styles/Details.module.css";
 
-const Countryname = ({ countryInfo }) => {
-  console.log(countryInfo);
-  // const router = useRouter();
-
-  // function toPage() {
-  //   console.log(router);
-  //   router.push("/");
-  // }
-
+const Countryname = ({
+  countryInfo,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const {
     name: { common: commonName, nativeName },
     population,
@@ -33,18 +21,6 @@ const Countryname = ({ countryInfo }) => {
     flags: { png: image },
   } = countryInfo[0];
 
-  // console.log(countryInfo[0]);
-
-  // console.log(commonName);
-  // console.log(nativeName[Object.keys(nativeName)[0]].common);
-  // console.log(population);
-  // console.log(region);
-  // console.log(subregion);
-  // console.log(capital);
-  // console.log(topLevelDomain);
-  // console.log(currencies);
-  // console.log(borders);
-  // console.log(languages);
   const getLanguages = (lang: []) => {
     let languagesString = "";
     for (let h in lang) {
@@ -56,16 +32,13 @@ const Countryname = ({ countryInfo }) => {
   const getCurrencies = (currency: []) => {
     let currenciesString = "";
     for (let h in currency) {
-      console.log("h", h);
       currenciesString += h + " , ";
     }
     return currenciesString;
   };
-  // console.log(getCurrencies(currencies));
 
   return (
     <section className={detailsStyle.main}>
-      {/* <div onC>Back</div> */}
       <Link href="/">
         <a className={detailsStyle.back}>go back</a>
       </Link>
@@ -137,7 +110,7 @@ const Countryname = ({ countryInfo }) => {
   );
 };
 
-export async function getStaticProps(context: any) {
+export const getStaticProps: GetStaticProps = async (context: any) => {
   const name = context.params.countryname;
   const res = await fetch(
     `https://restcountries.com/v3.1/name/${name}?fullText=true`
@@ -146,9 +119,9 @@ export async function getStaticProps(context: any) {
   return {
     props: { countryInfo },
   };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const countries = await res.json();
   const countriesPaths = countries.map((country: any) => {
@@ -159,5 +132,5 @@ export async function getStaticPaths() {
     paths: countriesPaths,
     fallback: false,
   };
-}
+};
 export default Countryname;
