@@ -25,7 +25,7 @@ const Navbar = () => {
   return (
     <div className={navStyle.navbar}>
       <div className={navStyle.logo}>
-        <h1 >Where in the world?</h1>
+        <h1>Where in the world?</h1>
       </div>
       <div className="mode" onClick={() => changeMode()}>
         <FontAwesomeIcon icon={icon} />

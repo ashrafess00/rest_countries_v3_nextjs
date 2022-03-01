@@ -47,7 +47,7 @@ const Countryname = ({
           className="imageCon"
           style={{ position: "relative", width: "100%", height: "45.66vw" }}
         >
-          <Image src={image} layout="fill" />
+          <Image src={image} layout="fill" alt={commonName} />
         </div>
         <div className="infos">
           <div className="infos-1">

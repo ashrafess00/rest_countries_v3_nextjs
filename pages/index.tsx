@@ -3,7 +3,7 @@ import Image from "next/image";
 import homeStyle from "../styles/Home.module.css";
 import Link from "next/link";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import useSWR from "swr";
 
@@ -116,13 +116,18 @@ const Home: NextPage = () => {
 
 const Country = (props: CountryInfo) => {
   return (
-    <Link href="/countryname" as={`/${props.name}`}>
+    <Link href="/countryname" as={`/${props.name}`} passHref>
       <div className={homeStyle.countryDiv}>
         <div
           className="imageWrapper"
           style={{ position: "relative", width: "100%", height: "35.66vw" }}
         >
-          <Image src={props.image} layout="fill" objectFit="cover" />
+          <Image
+            src={props.image}
+            layout="fill"
+            objectFit="cover"
+            alt={props.name}
+          />
         </div>
         <div className={homeStyle.infoCon}>
           <h2>{props.name}</h2>
